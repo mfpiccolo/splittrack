@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation
-//= require_tree .
+//= require split_payment
 $(function() {
   $(document).foundation();
 });

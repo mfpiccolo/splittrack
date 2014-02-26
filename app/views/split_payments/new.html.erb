@@ -1,0 +1,39 @@
+<%= form_for @split_payment do |f| %>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse">
+        <div class="small-4 columns">
+          <%= f.label :total %>
+          <%= f.text_field :total %>
+        </div>
+        <div class="small-4 columns">
+          <%= f.label :paid %>
+          <%= f.text_field :paid %>
+        </div>
+        <div class="small-4 columns">
+          <%= f.label :cash %>
+          <%= f.text_field :cash %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-6 columns">
+      <div class="row collapse" id="contacts">
+        <div class="small-12 columns">
+          Add contact <span class="add-contact">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>

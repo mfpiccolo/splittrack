@@ -9,6 +9,9 @@ gem 'pg'
 # Use thin server
 gem 'thin'
 
+# money
+gem "money-rails"
+
 # Authentication
 gem "omniauth"
 gem 'omniauth-dwolla'
