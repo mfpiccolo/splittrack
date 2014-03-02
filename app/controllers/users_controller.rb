@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user?, :except => [:index]
+  before_action :authenticate_user!, except: [:autocomplete_user_name]
+  before_action :correct_user?, except: [:index, :autocomplete_user_name]
 
   def index
     @users = User.all
@@ -24,6 +24,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def autocomplete_user_name
+    users = User.select([:name]).where("name LIKE ?", "%#{params[:name]}%")
+    result = users.collect do |u|
+      { value: u.name }
+    end
+    render json: result
+  end
 
   private
 

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require turbolinks
+//= require select2
 //= require foundation
 //= require split_payment
 $(function() {

@@ -1,4 +1,4 @@
-jQuery ($) ->
+$ ->
 
   show_hide_plus_minus = (scan) ->
     $(scan).each (index, s) ->
@@ -7,24 +7,32 @@ jQuery ($) ->
     $(".add-contact:last").show()
     $(".remove-contact:first").show()
 
-  # if /shipping_estimate/i.test(window.location)
-  #   refresh_package_row_colors ".package"
-  #   show_hide_plus_minus ".add-package"
-  #   $(".remove-package:last").hide()  if $("#packages-table tr").length is 3
-  #   refresh_amount_cents $("#shipping_estimate_margin")[0]  if $("#shipping_estimate_amount_cents").length > 0
-  #   check_addresses $("#shipping_estimate_purchase_order_id")[0]
+  # autocomp_opts =
+  #     minLength: 2
+  #     source: (request, response) ->
+  #       $.ajax
+  #         url: $('.users_with_autocomplete').data('autocompleteurl')
+  #         dataType: "json"
+  #         data:
+  #           name: request.term
+  #         success: (data) ->
+  #           response(data)
 
-  $(".add-contact").click ->
-    alert "something"
-    $("#contacts").prepend "<div class='small-5 columns'><input class='contact-name' name='contact[][name]' placeholder='Choose a contact' type='text'></div><div class='small-5 columns'><input class='contact-amount' name='contact[][amount]' placeholder='Enter Amount' type='text'></div><div class=small-1 columns'><span class='add-contact'>+</span></div>"
-    # refresh_package_row_colors ".package"
-    # show_hide_plus_minus ".add-package"
-    # $("#shipping-estimate-preview").hide()
+  if /split_payments/i.test(window.location)
+    show_hide_plus_minus ".add-contact"
+    $(".remove-contact:last").hide()
+    $(".select2").select2()
 
-  # $(".remove-package").live "click", "#packages-table", (e) ->
-  #   $(this).parent().parent().remove()  if $("#packages-table tr").length > 3
-  #   refresh_package_row_colors ".package"
-  #   show_hide_plus_minus ".add-package"
-  #   $("#shipping-estimate-preview").hide()
+  $("#new_split_payment").on "click", ".add-contact", ->
+    new_div = $("<div class='small-12 columns'><div class='small-5 columns'><input class='contact-name' name='contact[][name]' placeholder='Choose a contact' type='text'></div><div class='small-5 columns'><input class='contact-amount' name='contact[][amount]' placeholder='Enter Amount' type='text'></div><div class='small-1 columns'><span class='remove-contact'>-</span></div><div class='small-1 columns'><span class='add-contact'>+</span></div></div>")
+    $("#contacts").append new_div
+    # new_div.autocomplete(autocomp_opts)
+    show_hide_plus_minus ".add-contact"
 
+  $("#new_split_payment").on "click", ".remove-contact", ->
+    $(this).parent().parent().remove() if $("#contacts > div").length > 1
+    show_hide_plus_minus ".add-contact"
+
+  # TODO get the autocomplete stuff on page load
+  # $('.users_with_autocomplete').autocomplete(autocomp_opts)
 

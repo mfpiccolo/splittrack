@@ -1,19 +1,19 @@
 <table>
   <tr>
     <td>AVAILABLE FUNDS</td>
-    <td>$20.00</td>
+    <td><%= current_user.try(:available_balance) %></td>
   </tr>
   <tr>
-    <td>YOU OWE</td>
-    <td>$10.00</td>
+    <td><%= link_to "YOU ARE OWED", user_receivables_path(current_user) %></td>
+    <td><%= current_user.total_receivable %></td>
   </tr>
   <tr>
-    <td>YOU ARE OWED</td>
-    <td>$5.00</td>
+    <td><%= link_to "YOU OWE", user_payables_path(current_user) %></td>
+    <td><%= current_user.total_payable %></td>
   </tr>
   <tr>
     <td>+/-</td>
-    <td>$15.00</td>
+    <td><%= current_user.balance_snapshot %></td>
   </tr>
   <tr>
     <td>SCHEDULED PMTS</td>

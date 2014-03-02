@@ -9,6 +9,7 @@ gem 'pg'
 # Use thin server
 gem 'thin'
 
+gem "select2-rails"
 # money
 gem "money-rails"
 
@@ -33,6 +34,7 @@ gem 'foundation-rails', "~> 5.0.3.1"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

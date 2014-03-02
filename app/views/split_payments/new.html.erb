@@ -30,7 +30,22 @@
     <div class="large-6 columns">
       <div class="row collapse" id="contacts">
         <div class="small-12 columns">
-          Add contact <span class="add-contact">+</span>
+          <div class='small-5 columns'>
+            <%= select_tag 'contact_payments[][id]',
+              options_for_select(User.all.map { |u| [u.name, u.id] }),
+              { class: 'select2' }
+            %>
+            <%#= text_field_tag 'contact_payments[][id]', "", class: 'users_with_autocomplete', placeholder: 'Choose a contact', data: { autocompleteUrl: autocomplete_user_name_users_path(current_user) } %>
+          </div>
+          <div class='small-5 columns'>
+            <input class='contact-amount' name='contact_payments[][amount]' placeholder='Enter Amount' type='text'>
+          </div>
+          <div class='small-1 columns'>
+            <span class='remove-contact'>-</span>
+          </div>
+          <div class='small-1 columns'>
+            <span class='add-contact'>+</span>
+          </div>
         </div>
       </div>
     </div>
