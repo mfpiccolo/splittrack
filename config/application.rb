@@ -22,5 +22,13 @@ module Splittrack
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/services/**/"]
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
+    # Less
+    config.less.paths << "#{Rails.root}/vendor/assets/bower_components/chocolate-ui/src/themes/ios"
+    config.less.compress = true
   end
 end

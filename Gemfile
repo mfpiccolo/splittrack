@@ -10,6 +10,11 @@ gem 'pg'
 gem 'thin'
 
 gem "select2-rails"
+
+gem "bower-rails", "~> 0.7.1"
+gem "less-rails"
+gem 'therubyracer'
+
 # money
 gem "money-rails"
 

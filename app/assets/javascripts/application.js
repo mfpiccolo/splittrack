@@ -17,6 +17,7 @@
 //= require select2
 //= require foundation
 //= require split_payment
+//= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/.
 $(function() {
   $(document).foundation();
 });
