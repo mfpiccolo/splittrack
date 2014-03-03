@@ -5,24 +5,10 @@
     <title><%= content_for?(:title) ? yield(:title) : "Splittrack" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Splittrack" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="off-canvas-wrap">
-      <div class="inner-wrap">
-        <%= render 'layouts/navigation' %>
-        <%= render 'layouts/off_canvas_right_nav' %>
-        <section class="main-section">
-           <%= render 'layouts/messages' %>
-           <%= yield %>
-           <div class="push"></div>
-           <%= render 'layouts/footer' %>
-        </section>
-        <a class="exit-off-canvas"></a>
-      </div>
-    </div>
+    <%= yield %>
   </body>
 </html>

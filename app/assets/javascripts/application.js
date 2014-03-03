@@ -10,14 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery.ui.autocomplete
 //= require turbolinks
-//= require select2
-//= require foundation
+//= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/min/.
+//= require tabbar
+//= require split_pay_form
+//= require jquery
 //= require split_payment
-//= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/.
-$(function() {
-  $(document).foundation();
-});
+var $j = jQuery.noConflict();

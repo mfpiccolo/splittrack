@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :receivables, foreign_key: "collector_id", class_name: "Entry"
   has_many :payables, foreign_key: "payer_id", class_name: "Entry"
 
+  has_many :contact_relations
+  has_many :contacts, through: :contact_relations, class_name: "User"
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.provider = auth['provider']
@@ -38,5 +41,21 @@ class User < ActiveRecord::Base
 
   def balance_snapshot
     total_receivable + available_balance - total_payable
+  end
+
+  def owe(contact_id)
+    payables.where(collector_id: contact_id).sum(&:amount)
+  end
+
+  def owed(contact_id)
+    receivables.where(payer_id: contact_id).sum(&:amount)
+  end
+
+  def owe_entries(contact_id)
+    payables.where(collector_id: contact_id)
+  end
+
+  def owed_entries(contact_id)
+    receivables.where(payer_id: contact_id)
   end
 end

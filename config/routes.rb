@@ -17,5 +17,6 @@ Splittrack::Application.routes.draw do
 
   get '/test' => 'test#new'
 
+  get "/login" => 'registrations#new'
 
 end
