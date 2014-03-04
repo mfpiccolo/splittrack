@@ -58,8 +58,8 @@
 
 <!-- Contacts Screen -->
 <nav>
-  <a href='javascript:void(null)' class="button back">Back</a>
   <h1>Contacts</h1>
+  <a id="add-contact" class='button align-flush'>+ Contact</a>
 </nav>
 <article id="available-funds" class='next'>
   <section>
@@ -89,7 +89,7 @@
   <h1>Split Pay</h1>
   <a class='button done align-flush'>Done</a>
 </nav>
-<article class='current'>
+<article id="split-payment" class='next'>
   <section>
     <%= form_for @split_payment do |f| %>
     <!-- <form id='userForm' action='javascript:submitForm()'> -->
@@ -182,6 +182,30 @@
   </section>
 </article>
 
+<!-- Add Contacts Form -->
+<nav>
+  <h1>Add Contacts</h1>
+</nav>
+<article id="add-contacts-form" >
+  <section>
+    <%= form_tag contact_relations_path do %>
+    <!-- <form id='userForm' action='javascript:submitForm()'> -->
+      <h2>Personal Info</h2>
+      <ul class='list'>
+        <li class='comp'>
+          <div>
+            <h3>Email</h3>
+          </div>
+          <aside>
+            <%= text_field_tag :email, nil, placeholder: "example@mail.com" %>
+           </aside>
+         </li>
+      </ul>
+      <%= submit_tag "Send Request", class: "button action" %>
+    <% end %>
+  </section>
+</article>
+
 <!-- Contacts, Owe and Owed screens -->
 
 <% current_user.contacts.each do |contact| %>
@@ -254,7 +278,3 @@
     </section>
   </article>
 <% end %>
-
-
-
-

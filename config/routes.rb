@@ -7,7 +7,8 @@ Splittrack::Application.routes.draw do
     resources :payables, only: [:index]
   end
 
-  resources :split_payments
+  resources :split_payments, only: [:new, :create]
+  resources :contact_relations, only: [:create]
 
   # Session routes
   get '/auth/:provider/callback' => 'sessions#create'

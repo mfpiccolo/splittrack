@@ -47,7 +47,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "dwolla"
+gem "dwolla-ruby"
 
 group :development, :test do
   gem "pry",                     "~> 0.9.12.2"
