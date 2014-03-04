@@ -1,6 +1,27 @@
 .tabbar {
-  height: 80px;
-  background-color: #cccccc;
+  height: 88px;
+  background: rgb(54, 25, 25); /* Fall-back for browsers that don't
+                                  support rgba */
+  background: rgba(54, 25, 25, 0);
+  border-top: 0px;
+
+  label {
+    color: white;
+    font-size: 18px;
+  }
+
+  .button {
+    &:hover {
+      background: rgba(54, 25, 25, 0.5);
+    }
+  }
+
+  .selected {
+    background: rgba(54, 25, 25, 0.5);
+    &:hover {
+      background: rgba(54, 25, 25, 0.5);
+    }
+  }
 }
 
 .tabbar > .button > .icon {
@@ -8,15 +29,12 @@
   display: block;
   height: 50px;
   width: 50px;
-  background-color: black;
+  background-color: white;
   -webkit-mask-position: center center;
   -webkit-mask-size: 100%;
   -webkit-mask-repeat: no-repeat;
 }
-.tabbar > .button.selected > .icon,
-.tabbar > .button:hover > .icon {
-  background-color: black;
-}
+
 .tabbar > .button.home > .icon  {
   -webkit-mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAbRJREFUeNrsme1twyAQhmknYISO4BE8grMBI3gEdwJ3A0bICO4G7gbuBmQD15GwhBAHnMOX1Dvp/ZPgcA8cr88OYxRtxVuBOT60Hod+Isb3wOex12eJ+dBuaNFQUIzWeFtdaQB+6A4kozwJTQEQaLfYe6ZSeq784IH0fX8pUoM8V3qNKIFzx0SLIEKvNEdcI7WaARl1Qhxwm5vHcYTeHc4qh/Qczs0oMx4YuzpcLvqwv+pMSyAxHmHJGPU5nGn1TGiWWactV1jlVB3kTAyabLYSVhageQdXtUBEYHIRcZderN3aSoP42gdlTSIDCa1Gq8IDZZoUBONMS2RSdqsic4JgnKlDrCxUjqFeayjlTFdtdYp0NIVta7DOtCcQZmHG1M40J4K4UqoyhTPxyMN5RbZ5+GCcTapM9OMppKyDLSOtHHyac223ygxxxdHUOWiLqMOhMIQrB5+xgCs9IV4K5NYSqIqJAbQCecctIcjRnO41OJ6394bUW13HiHmybBUk++ugKkEg/wXkW78gh/RJO0IgBEIgBEIgBFIJ5LehfB+vgNx8P1AwvljF/9kpKCgoKJzxJ8AAlJOWaX122+kAAAAASUVORK5CYII=")
 }

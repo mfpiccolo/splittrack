@@ -73,12 +73,77 @@ h3 {
 
 // CHUI
 
-.hasTabBar .current {
-  margin-top: 1.5em;
+article {
+  a {
+    color: white !important;
+    border: solid 1px white !important;
+  }
 }
 
 section h2 {
   margin: 10px 0px 6px 15px !important;
 }
+
+.current {
+  margin-top: 1.5em;
+}
+
+nav {
+  // background: rgb(54, 25, 25); Fall-back for browsers that don't
+  //                                 support rgba
+  background-color: rgba(54, 25, 25, 0) !important;
+  height: 70px !important;
+  border-bottom: 0px !important;
+
+  h1 {
+    font-size: 22px !important;
+    color: white !important;
+    padding-top: 0  .5em;
+    padding-bottom: 10px;
+  }
+}
+
+// article {
+//   background-color: black;
+// }
+
+ul {
+  opacity:0.6;
+}
+
+  // .background-image {
+  //   background: url(http://poolga.com/shared/images/poolgas/iphone_1798.jpg);
+  //   background-repeat: no-repeat;
+  //   background-size:cover;
+  //   -webkit-filter: blur(5px);
+  // }
+
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -999;
+
+  display: block;
+  height: 105%;
+  width: 105%;
+  // background-image: url(http://poolga.com/shared/images/poolgas/iphone_1667.jpg);
+  // background-image: url(http://poolga.com/shared/images/poolgas/iphone_1604.jpg);
+  background-image: url(http://cullogo.com/full/wallpapers-nature-green-field-covering-mountain-sizes-1280x1024.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+
+  overflow:hidden;
+  margin:-3px;
+  padding:3px;
+
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
 
 
