@@ -9,6 +9,15 @@ gem 'pg'
 # Use thin server
 gem 'thin'
 
+gem "select2-rails"
+
+gem "bower-rails", "~> 0.7.1"
+gem "less-rails"
+gem 'therubyracer'
+
+# money
+gem "money-rails"
+
 # Authentication
 gem "omniauth"
 gem 'omniauth-dwolla'
@@ -30,6 +39,7 @@ gem 'foundation-rails', "~> 5.0.3.1"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -37,7 +47,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "dwolla"
+gem "dwolla-ruby"
 
 group :development, :test do
   gem "pry",                     "~> 0.9.12.2"

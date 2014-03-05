@@ -9,8 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require framework_and_overrides
  *= require foundation_and_overrides
  *= require all
+ *= require select2
+ *= require ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/min/chui.ios-3.0.4.min
+ *= require tabbar
  */
 

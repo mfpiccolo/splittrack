@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Payer Id</th>
+    <th>Amount</th>
+  </tr>
+  <% @payables.each do |p| %>
+    <tr>
+      <td><%= p.description %></td>
+      <td><%= p.payer_id %></td>
+      <td><%= p.amount %></td>
+    </tr>
+  <% end %>
+</table>
