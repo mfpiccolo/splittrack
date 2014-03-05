@@ -14,14 +14,18 @@ class CreateEntries
 
   def call
     contact_payments.each do |e|
-      Entry.create(
+      entry = Entry.create!(
         collector_id: user.to_param,
         payer_id: e["id"],
+        payer_email: e["email"],
         amount: e["amount"],
         source_id: source.to_param,
         source_type: source.class.name,
         description: source.name
       )
+
+      email = entry.try(:user).try(:email) || entry.payer_email
+      UserMailer.request_payment(user.to_param, entry.to_param, email).deliver
     end
   end
 

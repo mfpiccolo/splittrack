@@ -19,8 +19,9 @@ gem 'therubyracer'
 gem "money-rails"
 
 # Authentication
+gem "devise"
 gem "omniauth"
-gem 'omniauth-dwolla'
+gem 'omniauth-dwolla', git: "git@github.com:masukomi/omniauth-dwolla.git"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

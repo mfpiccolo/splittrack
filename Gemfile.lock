@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:masukomi/omniauth-dwolla.git
+  revision: 87f746bd608b2f2b77c83fbb187dbeb23594eb06
+  specs:
+    omniauth-dwolla (0.0.14)
+      dwolla (>= 0.0.14)
+      omniauth (~> 1.1.4)
+      omniauth-oauth2 (~> 1.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,6 +37,9 @@ GEM
     addressable (2.3.5)
     arel (4.0.2)
     atomic (1.1.14)
+    bcrypt (3.1.7)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -54,6 +66,12 @@ GEM
       debugger-ruby_core_source (~> 1.3.1)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.2)
+    devise (3.2.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     dotenv (0.9.0)
     dwolla (0.0.14)
       faraday (>= 0.7.6)
@@ -123,13 +141,10 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-dwolla (0.0.14)
-      dwolla (>= 0.0.14)
-      omniauth (~> 1.1.4)
-      omniauth-oauth2 (~> 1.1.1)
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -205,6 +220,8 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     vcr (2.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -214,6 +231,7 @@ DEPENDENCIES
   binding_of_caller (~> 0.7.2)
   bower-rails (~> 0.7.1)
   coffee-rails (~> 4.0.0)
+  devise
   dotenv
   dwolla-ruby
   foundation-rails (~> 5.0.3.1)
@@ -224,7 +242,7 @@ DEPENDENCIES
   minitest-vcr (~> 0.1.0)
   money-rails
   omniauth
-  omniauth-dwolla
+  omniauth-dwolla!
   pg
   pry (~> 0.9.12.2)
   pry-debugger (~> 0.2.2)
