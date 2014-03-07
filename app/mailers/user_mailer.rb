@@ -5,6 +5,6 @@ class UserMailer < ActionMailer::Base
     @user = User.find(user_id)
     @email = email
     @entry = Entry.find(entry_id)
-    mail(to: email, subject: "#{user.name} has requested a payment")
+    mail(to: email, subject: "#{@user.name} has requested a payment")
   end
 end
