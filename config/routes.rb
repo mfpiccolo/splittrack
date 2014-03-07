@@ -1,11 +1,21 @@
 Splittrack::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  root :to => "home#index"
+  root :to => "new_home#index"
   resources :users, only: [:index, :show, :edit, :update ] do
     get :autocomplete_user_name, :on => :collection
-    resources :receivables, only: [:index]
-    resources :payables, only: [:index]
+    resources :receivables, only: [] do
+      collection do
+        get :approved_index
+        get :unapproved_index
+      end
+    end
+    resources :payables, only: [] do
+      collection do
+        get :approved_index
+        get :unapproved_index
+      end
+    end
   end
 
   resources :split_payments, only: [:new, :create]

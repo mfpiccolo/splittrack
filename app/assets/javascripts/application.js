@@ -13,7 +13,7 @@
 //= require turbolinks
 //= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/min/.
 //= require tabbar
-//= require jquery
+// = require jquery
 //= require main
 //= require split_payment
 var $j = jQuery.noConflict();

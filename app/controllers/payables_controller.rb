@@ -1,5 +1,10 @@
 class PayablesController < ApplicationController
-  def index
-    @payables = current_user.payables
+  def approved_index
+    @payables = current_user.payables.approved
   end
+
+  def unapproved_index
+    @payables = current_user.payables.unapproved
+  end
+
 end

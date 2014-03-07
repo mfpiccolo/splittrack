@@ -28,12 +28,12 @@ class User < ActiveRecord::Base
     Thread.current[:current_user] = usr
   end
 
-  def total_payable
-    Money.new(payables.sum(&:amount))
+  def total_payable(scope)
+    scope.present? ? Money.new(payables.send(scope).sum(&:amount)) : Money.new(payables.sum(&:amount))
   end
 
-  def total_receivable
-    Money.new(receivables.sum(&:amount))
+  def total_receivable(scope)
+    scope.present? ? Money.new(receivables.send(scope).sum(&:amount)) : Money.new(receivables.sum(&:amount))
   end
 
   def available_balance
@@ -45,19 +45,21 @@ class User < ActiveRecord::Base
     total_receivable + available_balance - total_payable
   end
 
-  def owe(contact_id)
-    payables.where(collector_id: contact_id).sum(&:amount)
+  def payable_entries_total(contact_id, scope = nil)
+    payable_entries(contact_id, scope).sum(&:amount)
   end
 
-  def owed(contact_id)
-    receivables.where(payer_id: contact_id).sum(&:amount)
+  def receivable_entries_total(contact_id, scope = nil)
+    receivable_entries(contact_id, scope).sum(&:amount)
   end
 
-  def owe_entries(contact_id)
-    payables.where(collector_id: contact_id)
+  def payable_entries(contact_id, scope = nil)
+    entries = payables.where(collector_id: contact_id)
+    scope.present? ? entries.send(scope) : entries
   end
 
-  def owed_entries(contact_id)
-    receivables.where(payer_id: contact_id)
+  def receivable_entries(contact_id, scope = nil)
+    entries = receivables.where(payer_id: contact_id)
+    scope.present? ? entries.send(scope) : entries
   end
 end
