@@ -19,6 +19,8 @@ gem 'therubyracer'
 gem "money-rails"
 
 # Authentication
+gem "dwolla"
+gem "devise"
 gem "omniauth"
 gem 'omniauth-dwolla'
 
@@ -47,7 +49,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "dwolla-ruby"
+# gem "dwolla-ruby"
 
 group :development, :test do
   gem "pry",                     "~> 0.9.12.2"

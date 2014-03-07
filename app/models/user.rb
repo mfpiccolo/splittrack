@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:dwolla]
 
   has_many :split_payments
   has_many :receivables, foreign_key: "collector_id", class_name: "Entry"
@@ -7,13 +11,11 @@ class User < ActiveRecord::Base
   has_many :contact_relations
   has_many :contacts, through: :contact_relations, class_name: "User"
 
-  def self.create_with_omniauth(auth)
-    create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      if auth['info']
-         user.name = auth['info']['name'] || ""
-         user.email = auth['info']['email'] || ""
+  # TODO remove?
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.dwolla_data"] && session["devise.dwolla_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
       end
     end
   end

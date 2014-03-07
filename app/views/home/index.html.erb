@@ -1,6 +1,7 @@
 <!-- Home Screen -->
 <nav>
   <h1>SplitTrack</h1>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "button" %>
 </nav>
 <article id='main' class='current'>
   <section>
@@ -52,7 +53,10 @@
       </li>
     </ul>
     <br><br>
-    <a id='goToLast' href='javascript:void(null)' class="button action">Straight to Detail Article</a>
+    <% unless current_user.provider == "dwolla" %>
+      <%= link_to "+ Connect Dwolla", user_omniauth_authorize_path(:dwolla),
+        class: "dwolla-button button action" %>
+    <% end %>
   </section>
 </article>
 
@@ -64,7 +68,7 @@
 <article id="available-funds" class='next'>
   <section>
     <ul class='list' role='list'>
-      <%   current_user.contacts.each do |contact| %>
+      <% current_user.contacts.each do |contact| %>
         <li class='comp' data-goto=<%= "contact-#{contact.to_param}" %>>
           <div>
             <h3><%= contact.name %></h3>
@@ -106,7 +110,7 @@
          </li>
          <li class='comp'>
            <div>
-            <h3>You Paid</h3>
+            <h3>You Paid (Optional)</h3>
           </div>
           <aside>
             <%= f.text_field :paid, placeholder: "Enter Amount" %>
@@ -114,14 +118,18 @@
           </aside>
          </li>
       </ul>
-      <h2>Contacts</h2>
+      <h2 class="list-heading">Who Owes You What?</h2>
       <ul id="split-contact-list" class='list'>
+        <li><h3>Select a contact or enter email address</h3><h3>Then add how much they owe you</h3></li>
         <li class='comp split-contact-row'>
           <div class="split-contact">
             <%= select_tag 'contact_payments[][id]',
               options_for_select(User.all.map { |u| [u.name, u.id] }),
-              { prompt: "Choose a Contact", class: 'select2' }
+              { prompt: "Contacts", class: 'select2' }
             %>
+          </div>
+          <div class="split-contact">
+            <input class='contact-amount' name='contact_payments[][email]' placeholder='jim@mail.com' type='text'>
           </div>
           <div class="split-contact">
             <input class='contact-amount' name='contact_payments[][amount]' placeholder='Enter Amount' type='text'>
@@ -209,6 +217,7 @@
 <!-- Contacts, Owe and Owed screens -->
 
 <% current_user.contacts.each do |contact| %>
+  <!-- Owed -->
   <nav>
     <a href='javascript:void(null)' class="button back">Back</a>
     <h1><%= contact.name + " owes you" %></h1>
@@ -230,6 +239,7 @@
     </section>
   </article>
 
+  <!-- Owe -->
   <nav>
     <a href='javascript:void(null)' class="button back">Back</a>
     <h1><%= contact.name + " owes you" %></h1>

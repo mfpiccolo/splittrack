@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:autocomplete_user_name]
-  before_action :correct_user?, except: [:index, :autocomplete_user_name]
 
   def index
     @users = User.all
