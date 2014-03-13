@@ -74,7 +74,7 @@ h3 {
 // CHUI
 
 article {
-  a {
+  a.dwolla-button {
     color: white !important;
     border: solid 1px white !important;
   }
@@ -97,8 +97,8 @@ nav {
 
   h1 {
     font-size: 22px !important;
-    color: white !important;
-    padding-top: 0  .5em;
+    // color: white !important;
+    padding-top: 0  .5em !important;
     padding-bottom: 10px;
   }
 }
@@ -132,8 +132,9 @@ ul {
   // background-image: url(http://cullogo.com/full/wallpapers-nature-green-field-covering-mountain-sizes-1280x1024.jpg);
   // background-image: url(http://media02.hongkiat.com/dark-wallpapers-2012/Grunge-Wallpaper.jpg);
   // background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/veins.jpg);
-  background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/Bamboo-Green.jpg);
+  // background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/Bamboo-Green.jpg);
   // background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/Bamboos.jpg);
+  // background-image: url(http://cospick.com/download/?idd=139928);
   background-repeat: no-repeat;
   background-size:cover;
   background-position:center;
@@ -142,12 +143,43 @@ ul {
   margin:-3px;
   padding:3px;
 
-  -webkit-filter: blur(20px);
-  -moz-filter: blur(20px);
-  -o-filter: blur(20px);
-  -ms-filter: blur(20px);
-  filter: blur(20px);
+  // -webkit-filter: blur(1px);
+  // -moz-filter: blur(1px);
+  // -o-filter: blur(1px);
+  // -ms-filter: blur(1px);
+  // filter: blur(1px);
 }
 
+.home-square {
+  height: 85px !important;
+  text-align: center;
+  margin-top: auto;
+}
+
+.credit {
+  color: green;
+}
+
+.debit {
+  color: red;
+}
+
+.money {
+  font-size: 40px;
+  font-family: -apple-system-font, "Helvetica Neue";
+  font-weight: 100
+}
+
+a.dont-show {
+  border: none !important;
+}
+
+.list {
+  border: none !important;
+}
+
+li {
+  list-style-type: none !important;
+}
 
 

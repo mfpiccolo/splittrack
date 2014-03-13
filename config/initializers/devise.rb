@@ -228,7 +228,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :dwolla, ENV['DWOLLA_KEY'], ENV['DWOLLA_SECRET'], {:strategy_class => OmniAuth::Strategies::Dwolla, :scope => 'accountinfofull|send|request|contacts|transactions|balance|funding|manageaccount', :provider_ignores_state => true}
+  # config.omniauth :dwolla, ENV['DWOLLA_KEY'], ENV['DWOLLA_SECRET'], {:strategy_class => OmniAuth::Strategies::Dwolla, :scope => 'accountinfofull|send|request|contacts|transactions|balance|funding|manageaccount', :provider_ignores_state => true}
     # Add the following line for heroku. Read https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 
   # ==> Warden configuration

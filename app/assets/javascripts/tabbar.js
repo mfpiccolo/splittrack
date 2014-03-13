@@ -1,9 +1,9 @@
 $(function() {
   var opts = {
-     tabs : 3,
+     tabs : 4,
      imagePath : "../icons-ios/",
-     icons : ["home", "contacts", "split_pay"],
-     labels : ["Home", "Contacts", "Split Pay"],
+     icons : ["home", "contacts", "split_pay", "split_pay"],
+     labels : ["Home", "Contacts", "Schedule", "Split Pay"],
      selected : 1
   };
   $.UITabbar(opts);

@@ -1,0 +1,21 @@
+<nav>
+  <a href='javascript:void(null)' class="button back">Back</a>
+  <h1>Unapproved Payment Requests</h1>
+</nav>
+<article id="owe" class='next'>
+  <section>
+    <ul class='list' role='list'>
+      <% current_user.contacts.each do |contact| %>
+        <li class='comp' data-goto=<%= "owe-entries#{contact.id}" %>>
+          <div>
+            <h3><%= contact.name %></h3>
+          </div>
+          <aside>
+            <h4><%= current_user.owe(contact.to_param) %></h4>
+            <span class='nav'></span>
+          </aside>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
