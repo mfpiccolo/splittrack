@@ -134,7 +134,7 @@ ul {
   // background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/veins.jpg);
   // background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/Bamboo-Green.jpg);
   // background-image: url(http://cdn.appstorm.net/android.appstorm.net/files/2011/02/Bamboos.jpg);
-  background-image: url(http://cospick.com/download/?idd=139928);
+  // background-image: url(http://cospick.com/download/?idd=139928);
   background-repeat: no-repeat;
   background-size:cover;
   background-position:center;
@@ -165,7 +165,9 @@ ul {
 }
 
 .money {
-  font-size: 30px;
+  font-size: 40px;
+  font-family: -apple-system-font, "Helvetica Neue";
+  font-weight: 100
 }
 
 a.dont-show {
