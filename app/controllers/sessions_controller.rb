@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to '/auth/dwolla'
+    redirect_to '/auth/venmo'
   end
 
   def create

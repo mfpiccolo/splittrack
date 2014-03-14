@@ -12,6 +12,9 @@ gem 'thin'
 gem "select2-rails"
 
 gem 'fullcalendar-rails'
+gem 'decent_exposure'
+gem 'ice_cube', '0.9.3'
+gem 'squeel'
 
 gem "bower-rails", "~> 0.7.1"
 gem "less-rails"
@@ -21,10 +24,14 @@ gem 'therubyracer'
 gem "money-rails"
 
 # Authentication
-gem "dwolla"
+# gem "dwolla"
 gem "devise"
 gem "omniauth"
-gem 'omniauth-dwolla'
+gem "omniauth-venmo"
+# gem 'omniauth-dwolla'
+
+gem "faraday"
+gem "hashie"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
