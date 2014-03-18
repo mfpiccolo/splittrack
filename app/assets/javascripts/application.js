@@ -13,6 +13,7 @@
 //= require turbolinks
 //= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/min/.
 //= require jquery
+//= require reveal_modal
 //= require fullcalendar
 //= require main
 //= require split_payment
