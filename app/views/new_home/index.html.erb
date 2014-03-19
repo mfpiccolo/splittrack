@@ -95,67 +95,6 @@
   </section>
 </article>
 
-<!-- Split Pay Form -->
-<!-- <nav>
-  <a href='javascript:void(null)' class="button back">Back</a>
-  <h1>Split Total</h1>
-</nav> -->
-<nav>
-  <a class='button cancel'>Cancel</a>
-  <h1>Schedule</h1>
-  <a class='button done align-flush'>Done</a>
-</nav>
-<article id="split-payment" class='next'>
-  <section>
-    <%= form_for @split_payment do |f| %>
-    <!-- <form id='userForm' action='javascript:submitForm()'> -->
-      <h2>Personal Info</h2>
-      <ul class='list'>
-        <li class='comp'>
-          <div>
-            <h3>Name/Description</h3>
-          </div>
-          <aside>
-            <%= f.text_field :name, placeholder: "Electric Bill" %>
-            <!-- <input type='text' name='user.name.first' placeholder='John'> -->
-           </aside>
-         </li>
-         <li class='comp'>
-           <div>
-            <h3>You Paid (Optional)</h3>
-          </div>
-          <aside>
-            <%= f.text_field :paid, placeholder: "Enter Amount" %>
-            <!-- <input type='text' name='user.name.last' placeholder='Doe'> -->
-          </aside>
-         </li>
-      </ul>
-      <h2 class="list-heading">Who Owes You What?</h2>
-      <ul id="split-contact-list" class='list'>
-        <li><h3>Select a contact or enter email address</h3><h3>Then add how much they owe you</h3></li>
-        <li class='comp split-contact-row'>
-          <div class="split-contact">
-            <%= select_tag 'contact_payments[][id]',
-              options_for_select(User.all.map { |u| [u.name, u.id] }),
-              { prompt: "Contacts", class: 'select2' }
-            %>
-          </div>
-          <div class="split-contact">
-            <input class='contact-amount' name='contact_payments[][email]' placeholder='jim@mail.com' type='text'>
-          </div>
-          <div class="split-contact">
-            <input class='contact-amount' name='contact_payments[][amount]' placeholder='Enter Amount' type='text'>
-          </div>
-          <aside>
-            <span class='remove-contact'>-</span>
-            <span class='add-contact'>+</span>
-          </aside>
-        </li>
-      </ul>
-    <% end %>
-  </section>
-</article>
-
 <!-- Approved Payable screen -->
 <nav>
   <a href='javascript:void(null)' class="button back">Back</a>
@@ -402,16 +341,17 @@
 
 <div id="modal2" style="display: none; position: fixed; z-index: 2; left: 50%; top: 50%; margin-left: -200px; margin-top: -134.5px; background-color: white;">
   <div class="header">
-    <h3>Create a new account</h3>
+    <h3>Schedule Payment</h3>
   </div>
-  <form action="" _lpchecked="1">
+  <%= form_for @payment do |f| %>
     <div class="txt">
-      <label for="username">Username:</label>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
       <input type="text" name="" id="username">
     </div>
     <div class="txt">
-      <label for="email">Email address:</label>
-      <input type="text" name="" id="email">
+      <%= f.label :from_date %>
+      <%= f.text_field :from_date, class: "datepicker" %>
     </div>
     <div class="txt">
       <label for="password">Password:</label>
@@ -421,5 +361,5 @@
       <a class="close">Sign Up</a>
       <a class="close cancel">Cancel</a>
     </div>
-  </form>
+  <% end %>
 </div>

@@ -11,7 +11,8 @@ $j(document).ready(function() {
     $j('#calendar').fullCalendar({
       dayClick: function(date, allDay, jsEvent, view) {
         // document.location.href=new_payment_link + "?start_date=" + date;
-        $.UIGoToArticle('#split-payment');
+        // $.UIGoToArticle('#split-payment');
+        $j("#modal2").show()
       },
         header: {
             left: 'prev,today,next',
@@ -49,4 +50,10 @@ $j(document).ready(function() {
     //   }
     // });
 
+  $j(function() {
+    $j( ".datepicker" ).datepicker({
+      dateFormat: "yy-mm-dd"
+    });
+  });
 });
+
