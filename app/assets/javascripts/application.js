@@ -13,8 +13,9 @@
 //= require turbolinks
 //= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/min/.
 //= require jquery
+//= require jquery.ui.datepicker
+//= require reveal_modal
 //= require fullcalendar
-//= require_tree ../../../vendor/assets/bower_components/dhtmlxTouch_v12_120913/codebase/js/.
 //= require main
 //= require split_payment
 //= require tabbar

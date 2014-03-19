@@ -18,6 +18,9 @@ Splittrack::Application.routes.draw do
     end
   end
 
+  resources :payments
+  resources :payment_instances
+
   resources :split_payments, only: [:new, :create]
   resources :contact_relations, only: [:create]
 
