@@ -17,7 +17,6 @@
 //= require reveal_modal
 //= require fullcalendar
 //= require main
-//= require split_payment
 //= require tabbar
 //= require calendar
 
