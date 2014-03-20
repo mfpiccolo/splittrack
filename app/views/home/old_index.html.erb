@@ -1,0 +1,375 @@
+<nav>
+  <h1>Sked</h1>
+  <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+</nav>
+<article id='main' class='current'>
+  <section>
+    <ul>
+    <div class="small-block-grid-3 medium-block-grid-3">
+      <h3>Receivables</h3>
+      <div class="row">
+        <div class="small-6 columns home-square">
+          <li data-goto="approved-receivables">
+            <h4>Approved</h4>
+            <div class="money credit"><%= current_user.total_receivable(:approved) %></div>
+          </li>
+        </div>
+        <div class="small-6 columns home-square">
+          <li data-goto="unapproved-receivables">
+            <h4>Unapproved</h4>
+            <div class="money credit"><%= current_user.total_receivable(:unapproved) %></div>
+          </li>
+        </div>
+      </div>
+      <h3>Payables</h3>
+      <div class="row">
+        <div class="small-6 columns home-square">
+          <li data-goto="approved-payables">
+            <h4>Approved</h4>
+            <div class="money debit"><%= current_user.total_payable(:approved) %></div>
+          </li>
+        </div>
+        <div class="small-6 columns home-square">
+          <li data-goto="unapproved-payables">
+            <h4>Unapproved</h4>
+            <div class="money debit"><%= current_user.total_payable(:unapproved) %></div>
+          </li>
+        </div>
+      </div>
+      <h3>Totals</h3>
+      <div class="row">
+        <div class="small-6 columns home-square">
+          <li data-goto="approved">
+            <h4>Available</h4>
+            <div class="money credit"><%= current_user.balance %></div>
+          </li>
+        </div>
+        <div class="small-6 columns home-square">
+          <h4>Net Snapshot</h4>
+          <div class="money credit">65.00</div>
+        </div>
+      </div>
+    </div>
+    </ul>
+    <br><br>
+    <% if current_user.token.blank? %>
+      <%= link_to "+ Connect Venmo", user_omniauth_authorize_path(:venmo),
+        class: "dwolla-button button action" %>
+    <% end %>
+  </section>
+</article>
+
+<!-- Contacts Screen -->
+<nav>
+  <h1>Contacts</h1>
+  <a id="add-contact" class='button align-flush'>+ Contact</a>
+</nav>
+<article id="contacts" class='next'>
+  <section>
+    <ul class='list' role='list'>
+      <% if @contacts.present? %>
+        <% @contacts.each do |contact| %>
+          <li class='comp' data-goto=<%= "contact-#{contact.venmo_id}" %>>
+            <div>
+              <h3><%= contact.display_name %></h3>
+            </div>
+            <aside>
+              <h4><%= contact.email %></h4>
+              <span class='nav'></span>
+            </aside>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<!-- Schedule Screen -->
+<nav>
+  <h1>Schedule</h1>
+</nav>
+<article id="schedule" class='next'>
+  <section>
+    <div id='calendar'></div>
+  </section>
+</article>
+
+<!-- Schedule Screen -->
+<nav>
+  <h1>Payment</h1>
+</nav>
+<article id="payments" class='next'>
+  <section>
+    <script type='text/x-handlebars'>{{ outlet }}</script>
+  </section>
+</article>
+
+<!-- Approved Payable screen -->
+<nav>
+  <a href='javascript:void(null)' class="button back">Back</a>
+  <h1>Payables</h1>
+</nav>
+<article id="approved-payables" class='next'>
+  <section>
+    <ul class='list' role='list'>
+      <% @contacts.each do |contact| %>
+        <li class='comp' data-goto=<%= "approved-payables-entries#{contact.id}" %>>
+          <div>
+            <h3><%= contact.name %></h3>
+          </div>
+          <aside>
+            <h4><%= current_user.payable_entries_total(contact.to_param, :approved) %></h4>
+            <span class='nav'></span>
+          </aside>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<!-- Unpproved Payables screen -->
+<nav>
+  <a href='javascript:void(null)' class="button back">Back</a>
+  <h1>Payables</h1>
+  <a href='javascript:void(null)' class="button">Settle Up</a>
+</nav>
+<article id="unapproved-payables" class='next'>
+  <section>
+    <ul class='list' role='list'>
+      <% @contacts.each do |contact| %>
+        <li class='comp' data-goto=<%= "unapproved-payables-entries#{contact.id}" %>>
+          <aside><%= link_to "Approve All", "#", class: "button action" %></aside>
+          <div>
+            <h3><%= contact.name %></h3>
+          </div>
+          <aside>
+            <h4><%= current_user.payable_entries_total(contact.to_param, :unapproved) %></h4>
+            <span class='nav'></span>
+          </aside>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<!-- Approved Receivables screen -->
+<nav>
+  <a href='javascript:void(null)' class="button back">Back</a>
+  <h1>Receivables</h1>
+</nav>
+<article id="approved-receivables" class='next'>
+  <section>
+    <ul class='list' role='list'>
+      <% @contacts.each do |contact| %>
+        <li class='comp' data-goto=<%= "approved-receivables-entries#{contact.id}" %>>
+          <div>
+            <h3><%= contact.name %></h3>
+          </div>
+          <aside>
+            <h4><%= current_user.receivable_entries_total(contact.to_param, :approved) %></h4>
+            <span class='nav'></span>
+          </aside>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<!-- Unpproved Receivables screen -->
+<nav>
+  <a href='javascript:void(null)' class="button back">Back</a>
+  <h1>Receivables</h1>
+</nav>
+<article id="unapproved-receivables" class='next'>
+  <section>
+    <ul class='list' role='list'>
+      <% @contacts.each do |contact| %>
+        <li class='comp' data-goto=<%= "unapproved-receivables-entries#{contact.id}" %>>
+          <div>
+            <h3><%= contact.name %></h3>
+          </div>
+          <aside>
+            <h4><%= current_user.receivable_entries_total(contact.to_param, :unapproved) %></h4>
+            <span class='nav'></span>
+          </aside>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<!-- Add Contacts Form -->
+<nav>
+  <h1>Add Contacts</h1>
+</nav>
+<article id="add-contacts-form" >
+  <section>
+    <%= form_tag "/" do %>
+    <!-- <form id='userForm' action='javascript:submitForm()'> -->
+      <h2>Personal Info</h2>
+      <ul class='list'>
+        <li class='comp'>
+          <div>
+            <h3>Email</h3>
+          </div>
+          <aside>
+            <%= text_field_tag :email, nil, placeholder: "example@mail.com" %>
+           </aside>
+         </li>
+      </ul>
+      <%= submit_tag "Send Request", class: "button action" %>
+    <% end %>
+  </section>
+</article>
+
+<!-- Contacts, Payable and Receivable screens -->
+<% if @contacts.present? %>
+
+  <% @contacts.each do |contact| %>
+    <!-- Unapproved Contact Payables -->
+    <nav>
+      <a href='javascript:void(null)' class="button back">Back</a>
+      <h1><%#= contact.name + " owes you" %></h1>
+    </nav>
+    <article id=<%= "unapproved-payables-entries#{contact.id}" %> class='next'>
+      <section>
+        <ul class='list'>
+          <!-- <%# current_user.payable_entries(contact.to_param, :unapproved).each do |entry| %>
+            <li class='comp'>
+              <aside><%#= link_to "Approve", "#", class: "button action" %></aside>
+              <div>
+                <h3><%#= entry.description %></h3>
+              </div>
+              <aside>
+                <h4><%#= entry.amount %></h4>
+              </aside>
+            </li>
+          <%# end %> -->
+        </ul>
+      </section>
+    </article>
+
+    <!-- Approved Contact Payables -->
+    <nav>
+      <a href='javascript:void(null)' class="button back">Back</a>
+      <h1><%#= contact.name + " owes you" %></h1>
+    </nav>
+    <article id=<%= "approved-payables-entries#{contact.id}" %> class='next'>
+      <section>
+        <ul class='list'>
+  <!--         <%# current_user.payable_entries(contact.to_param, :approved).each do |entry| %>
+            <li class='comp'>
+              <div>
+                <h3><%#= entry.description %></h3>
+              </div>
+              <aside>
+                <h4><%#= entry.amount %></h4>
+              </aside>
+            </li>
+          <%# end %> -->
+        </ul>
+      </section>
+    </article>
+
+    <!-- Unapproved Contact Receivables -->
+    <nav>
+      <a href='javascript:void(null)' class="button back">Back</a>
+      <h1><%#= contact.name + " owes you" %></h1>
+    </nav>
+    <article id=<%= "unapproved-receivables-entries#{contact.venmo}" %> class='next'>
+      <section>
+        <ul class='list'>
+  <!--         <%# current_user.receivable_entries(contact.to_param, :unapproved).each do |entry| %>
+            <li class='comp'>
+              <div>
+                <h3><%#= entry.description %></h3>
+              </div>
+              <aside>
+                <h4><%#= entry.amount %></h4>
+              </aside>
+            </li>
+          <%# end %> -->
+        </ul>
+      </section>
+    </article>
+
+    <!-- Approved Contact Receivable -->
+    <nav>
+      <a href='javascript:void(null)' class="button back">Back</a>
+      <h1><%#= contact.name + " owes you" %></h1>
+    </nav>
+    <article id=<%= "approved-receivables-entries#{contact.id}" %> class='next'>
+      <section>
+        <ul class='list'>
+  <!--         <%# current_user.receivable_entries(contact.to_param, :approved).each do |entry| %>
+            <li class='comp'>
+              <div>
+                <h3><%#= entry.description %></h3>
+              </div>
+              <aside>
+                <h4><%#= entry.amount %></h4>
+              </aside>
+            </li>
+          <%# end %> -->
+        </ul>
+      </section>
+    </article>
+
+    <!--  Contact show  -->
+    <nav>
+      <a href='javascript:void(null)' class="button back">Back</a>
+      <h1><%= contact.display_name %></h1>
+    </nav>
+    <article id=<%= "contact-#{contact.vendor_id}" %> class='next'>
+      <section>
+        <ul class='list'>
+          <li class='comp'>
+            <div>
+              <h3>Name</h3>
+            </div>
+            <aside>
+              <h4><%= contact.display_name %></h4>
+            </aside>
+          </li>
+          <li class='comp'>
+            <div>
+              <h3>Email</h3>
+            </div>
+            <aside>
+              <h4><%= contact.email %></h4>
+            </aside>
+          </li>
+        </ul>
+
+        <%= link_to "Send Invite", "#",
+          class: "button action" %>
+      </section>
+    </article>
+  <% end %>
+<% end %>
+
+<div id="modal2" style="display: none; position: fixed; z-index: 2; left: 50%; top: 50%; margin-left: -200px; margin-top: -134.5px; background-color: white;">
+  <div class="header">
+    <h3>Schedule Payment</h3>
+  </div>
+  <%= form_for @payment, url: api_v1_payments_path do |f| %>
+    <div class="txt">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <input type="text" name="" id="username">
+    </div>
+    <div class="txt">
+      <%= f.label :payment_at %>
+      <%= f.text_field :payment_at, class: "datepicker" %>
+    </div>
+    <div class="txt">
+      <label for="password">Password:</label>
+      <input type="password" name="" id="password">
+    </div>
+    <div class="btn clearfix">
+      <a class="close">Sign Up</a>
+      <a class="close cancel">Cancel</a>
+    </div>
+  <% end %>
+</div>
+

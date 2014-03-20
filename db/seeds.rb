@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Seeding..."
+
+5.times do
+  Payment.create(
+    name: "A Sample Payment",
+    amount_cents: 2000,
+    payment_at: Time.now,
+    user_id: 1
+  )
+end
+
+puts "Complete!"

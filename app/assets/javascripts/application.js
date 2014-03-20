@@ -10,15 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
-//= require_tree ../../../vendor/assets/bower_components/chocolatechip-ui/src/chui/min/.
 //= require jquery
 //= require jquery.ui.datepicker
-//= require reveal_modal
 //= require fullcalendar
-//= require main
-//= require tabbar
-//= require calendar
+//= require_tree ./jquery
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require splittrack
 
-var $j = jQuery.noConflict();
+Splittrack = Ember.Application.create()
 

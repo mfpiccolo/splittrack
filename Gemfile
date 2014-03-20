@@ -20,6 +20,9 @@ gem "bower-rails", "~> 0.7.1"
 gem "less-rails"
 gem 'therubyracer'
 
+gem "ember-rails"
+gem 'ember-source'
+
 # money
 gem "money-rails"
 

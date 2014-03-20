@@ -1,0 +1,17 @@
+<div id="container">
+  <h1>Skedular</h1>
+  {{view Splittrack.NewPaymentView}}
+  <ul>
+    {{#each controller}}
+      <li>
+        {{name}}
+        {{amount_cents}}
+        {{#if winner}}
+          <span {{bind-attr class="winner highlight"}}>WINNER</span>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+  <button {{action "drawWinner"}}>Draw Winner</button>
+</div>
+
