@@ -1,5 +1,10 @@
 ## In a real app you will probably want to separate components into different files
 ## They are grouped together here for ease of exposition
+App.urls ||= {}
+App.urls.login = "/users/sign_in.json"
+App.urls.register = "/users.json"
+App.urls.logout = "/users/sign_out.json"
+
 
 App.AuthController = Ember.ObjectController.extend
   currentUser:  null

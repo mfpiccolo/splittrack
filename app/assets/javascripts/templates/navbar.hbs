@@ -1,18 +1,12 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <div class="brand strong">{{#link-to 'home'}}Ember-Rails-Devise{{/link-to}}</div>
-      <ul class="nav">
-          <li>{{#link-to 'help'}}Help{{/link-to}}</li>
-      </ul>
-      <div class="btn-group pull-right">
-        {{#if isAuthenticated}}
-            <button class="btn" {{action logout}}>Logout</button>
-        {{else}}
-            {{view App.MenuItem href="#/login" label="Login" }}
-            {{view App.MenuItem href="#/registration" label="Register"}}
-        {{/if}}
-      </div>
-    </div>
+<nav class="current">
+  {{#link-to 'home'}}Home{{/link-to}}
+  {{#link-to 'help'}}Help{{/link-to}}
+  <h1 class="buttonOnRight">Skedular</h1>
+    {{#if isAuthenticated}}
+        {{action logout}}
+    {{else}}
+        {{view App.MenuItem href="#/login" label="Login" }}</a>
+        {{view App.MenuItem href="#/registration" label="Register"}}
+    {{/if}}
   </div>
-</div>
+</nav>

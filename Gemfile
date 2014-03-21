@@ -29,6 +29,7 @@ gem "money-rails"
 # Authentication
 # gem "dwolla"
 gem "devise"
+gem "cancan"
 gem "omniauth"
 gem "omniauth-venmo"
 # gem 'omniauth-dwolla'
