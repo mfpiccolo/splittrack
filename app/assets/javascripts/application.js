@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.ui.datepicker
+
 //= require fullcalendar
 //= require_tree ./jquery
 //= require handlebars
@@ -20,5 +21,7 @@
 //= require_self
 //= require splittrack
 
-Splittrack = Ember.Application.create()
+App = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
 
