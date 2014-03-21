@@ -1,9 +1,8 @@
 <nav class="current">
-  {{#link-to 'home'}}Home{{/link-to}}
-  {{#link-to 'help'}}Help{{/link-to}}
+  {{#link-to 'help' classNames="button"}}Help{{/link-to}}
   <h1 class="buttonOnRight">Skedular</h1>
     {{#if isAuthenticated}}
-        {{action logout}}
+        <a class="button">{{action "logout"}}Logout</a>
     {{else}}
         {{view App.MenuItem href="#/login" label="Login" }}</a>
         {{view App.MenuItem href="#/registration" label="Register"}}

@@ -1,1 +1,7 @@
-<div class="tabbar" id="ht123lsz"><a class="button home selected"><label>Home</label></a><a class="button contacts"><label>Contacts</label></a><a class="button split_pay"><label>Schedule</label></a><a class="button split_pay"><label>Split Pay</label></a></div>
+<div class="tabbar" id="ht123lsz">
+  {{#link-to 'home' classNames="button"}}<label>Home</label>{{/link-to}}
+  {{#link-to 'contacts' classNames="button"}}<label>Contacts</label>{{/link-to}}
+  {{#link-to 'calendar' classNames="button"}}<label>Canlendar</label>{{/link-to}}
+  {{#link-to 'schedule' classNames="button"}}<label>Schedule</label>{{/link-to}}
+</div>
+

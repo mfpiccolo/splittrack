@@ -6,12 +6,14 @@ App.Router.map ->
   @route "help"
   @route "login"
   @route "registration"
+  @route "contacts"
+  @route "schedule"
+  @route "calendar"
 
 
 App.IndexRoute = Ember.Route.extend
   beforeModel: (transition) ->
     @transitionTo 'home'
-
 
 App.LoginRoute = Ember.Route.extend
   model: -> Ember.Object.create()
@@ -20,18 +22,14 @@ App.LoginRoute = Ember.Route.extend
     controller.set "errorMsg", ""
   actions:
     login: ->
-      log.info "Logging in..."
       @controllerFor("auth").login this
     cancel: ->
-      log.info "cancelling login"
       @transitionTo 'home'
 
 App.RegistrationRoute = Ember.Route.extend
   model: -> Ember.Object.create()
   actions:
     register: ->
-      console.log "Registering..."
       @controllerFor("auth").register this
     cancel: ->
-      log.info "cancelling registration"
       @transitionTo 'home'

@@ -18,7 +18,6 @@ App.AuthController = Ember.ObjectController.extend
         "user[email]": route.currentModel.email
         "user[password]": route.currentModel.password
       success: (data) ->
-        log.log "Login Msg #{data.user.dummy_msg}"
         me.set 'currentUser', data.user
         route.transitionTo 'home'
       error: (jqXHR, textStatus, errorThrown) ->
@@ -49,7 +48,6 @@ App.AuthController = Ember.ObjectController.extend
         route.controllerFor('registration').set "errorMsg", "That email/password combo didn't work.  Please try again"
 
   logout: ->
-    log.info "Logging out..."
     me = @
     $.ajax
       url: App.urls.logout
@@ -58,7 +56,6 @@ App.AuthController = Ember.ObjectController.extend
       success: (data, textStatus, jqXHR) ->
         $('meta[name="csrf-token"]').attr('content', data['csrf-token'])
         $('meta[name="csrf-param"]').attr('content', data['csrf-param'])
-        log.info "Logged out on server"
         me.set 'currentUser', null
         me.transitionToRoute "home"
       error: (jqXHR, textStatus, errorThrown) ->
@@ -69,7 +66,6 @@ App.NavbarController = Ember.ObjectController.extend
   isAuthenticated: Em.computed.alias "controllers.auth.isAuthenticated"
   actions:
     logout: ->
-      log.info "NavbarController handling logout event..."
       @get("controllers.auth").logout()
 
 App.WelcomeMsgController = Ember.ObjectController.extend
