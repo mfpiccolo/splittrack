@@ -5,6 +5,7 @@ App.urls.login = "/users/sign_in.json"
 App.urls.register = "/users.json"
 App.urls.logout = "/users/sign_out.json"
 
+App.HomeController = Ember.ArrayController.extend()
 
 App.AuthController = Ember.ObjectController.extend
   currentUser:  null
@@ -73,6 +74,4 @@ App.WelcomeMsgController = Ember.ObjectController.extend
   isAuthenticated: Em.computed.alias "controllers.auth.isAuthenticated"
   user: Em.computed.alias "controllers.auth.currentUser"
   hiName: Em.computed.any "user.name","user.email"
-
-
 

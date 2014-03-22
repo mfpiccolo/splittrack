@@ -33,3 +33,7 @@ App.RegistrationRoute = Ember.Route.extend
       @controllerFor("auth").register this
     cancel: ->
       @transitionTo 'home'
+
+App.HomeRoute = Ember.Route.extend
+  model: -> App.User.find()
+

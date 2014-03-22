@@ -1,7 +1,57 @@
-<h1>Shows your current balences</h1>
-<p>
-    Welcome!
-</p>
-<p>
-    If you ran rake db:seed, you can log in with <strong>test@test.com</strong>, <strong>tester</strong>.  Or just register.
-</p>
+<article id='main' class='current'>
+  <section>
+    <ul>
+    <div class="small-block-grid-3 medium-block-grid-3">
+      <h3>Receivables</h3>
+      <div class="row">
+        <div class="small-6 columns home-square">
+          <li data-goto="approved-receivables">
+            <h4>Approved</h4>
+            <div class="money credit">100</div>
+          </li>
+        </div>
+        <div class="small-6 columns home-square">
+          <li data-goto="unapproved-receivables">
+            <h4>Unapproved</h4>
+            <div class="money credit">100</div>
+          </li>
+        </div>
+      </div>
+      <h3>Payables</h3>
+      <div class="row">
+        <div class="small-6 columns home-square">
+          <li data-goto="approved-payables">
+            <h4>Approved</h4>
+            <div class="money debit">100</div>
+          </li>
+        </div>
+        <div class="small-6 columns home-square">
+          <li data-goto="unapproved-payables">
+            <h4>Unapproved</h4>
+            <div class="money debit">100</div>
+          </li>
+        </div>
+      </div>
+      <h3>Totals</h3>
+      <div class="row">
+        <div class="small-6 columns home-square">
+          <li data-goto="approved">
+            <h4>Available</h4>
+            <div class="money credit">100</div>
+          </li>
+        </div>
+        <div class="small-6 columns home-square">
+          <h4>Net Snapshot</h4>
+          <div class="money credit">65.00</div>
+        </div>
+      </div>
+    </div>
+    </ul>
+    <br><br>
+      Link to add venmo
+  </section>
+</article>
+
+{{#each controller}}
+  {{name}}
+{{/each}}

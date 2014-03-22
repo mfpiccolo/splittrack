@@ -2,7 +2,7 @@
   {{#link-to 'help' classNames="button"}}Help{{/link-to}}
   <h1 class="buttonOnRight">Skedular</h1>
     {{#if isAuthenticated}}
-        <a class="button">{{action "logout"}}Logout</a>
+        <a class="button" {{action "logout"}}>Logout</a>
     {{else}}
         {{view App.MenuItem href="#/login" label="Login" }}</a>
         {{view App.MenuItem href="#/registration" label="Register"}}

@@ -4,6 +4,5 @@ Splittrack::Application.routes.draw do
 
   resources :payments
 
-
   root :to => "home#index"
 end

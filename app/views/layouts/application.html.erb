@@ -8,7 +8,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%- if user_signed_in? %>
-      <meta name="current-user" content="<%= UserSerializer.new current_user_json %>" />
+      <meta name="current-user" accesskey="current-user" content=<%= current_user_json %>/>
     <% end %>
   </head>
   <body>

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery.ui.datepicker
-
+//= require foundation
 //= require fullcalendar
 //= require_tree ./jquery
 //= require handlebars
@@ -24,4 +24,3 @@
 App = Ember.Application.create({
   LOG_TRANSITIONS: true
 });
-
